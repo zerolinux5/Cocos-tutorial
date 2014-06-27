@@ -96,7 +96,6 @@
 }
 
 // -----------------------------------------------------------------------
-
 - (void)onExit
 {
     // always call super onExit last
@@ -124,6 +123,8 @@
     projectile.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:projectile.contentSize.width/2.0f andCenter:projectile.anchorPointInPoints];
     projectile.physicsBody.collisionGroup = @"playerGroup";
     projectile.physicsBody.collisionType  = @"projectileCollision";
+    CCActionRotateBy* actionSpin = [CCActionRotateBy actionWithDuration:1.5f angle:360];
+    [projectile runAction:[CCActionRepeatForever actionWithAction:actionSpin]];
     [_physicsWorld addChild:projectile];
     
     // 4
